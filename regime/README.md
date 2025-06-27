@@ -117,11 +117,45 @@ where \( \bar{r}_t \) is the mean return over the window:
 
 ### Cumulative Returns Calculation
 
-For daily simple returns \( r_t \), cumulative returns up to day \( T \) are:
+For daily simple returns 
+𝑟
+𝑡
+r 
+t
+​
+ , cumulative returns up to day 
+𝑇
+T are:
 
-\[
-CR_T = \prod_{t=1}^{T} (1 + r_t) - 1
-\]
+𝐶
+𝑅
+𝑇
+=
+∏
+𝑡
+=
+1
+𝑇
+(
+1
++
+𝑟
+𝑡
+)
+−
+1
+CR 
+T
+​
+ = 
+t=1
+∏
+T
+​
+ (1+r 
+t
+​
+ )−1
 
 
 ## 5. Output
