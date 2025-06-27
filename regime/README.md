@@ -68,30 +68,52 @@ The project was divided into distinct phases:
 
 An HMM assumes:
 
-- There is an underlying sequence of **hidden states** \( S_t \in \{1, 2, ..., N\} \) governing market behavior.
-- Each hidden state emits observations \( O_t \), here modeled as a continuous Gaussian distribution over the features \(\mathbf{x}_t = [\text{return}_t, \text{volatility}_t]\).
+- There is an underlying sequence of hidden states  
+  \( S_t \in \{1, 2, \ldots, N\} \)  
+  governing market behavior.
+
+- Each hidden state emits observations \( O_t \), here modeled as a continuous Gaussian distribution over the features  
+  \( \mathbf{x}_t = [\text{return}_t, \text{volatility}_t] \)
 
 The model parameters include:
 
-- **Transition probabilities** \( A = [a_{ij}] \), where \( a_{ij} = P(S_{t+1} = j \mid S_t = i) \)
-- **Emission parameters** for each state \( j \), with mean vector \(\mu_j\) and covariance matrix \(\Sigma_j\)
-- **Initial state probabilities** \( \pi \)
+- Transition probabilities  
+  \[
+  A = [a_{ij}], \quad \text{where} \quad a_{ij} = P(S_{t+1} = j \mid S_t = i)
+  \]
+
+- Emission parameters for each state \( j \), with mean vector \( \boldsymbol{\mu}_j \) and covariance matrix \( \Sigma_j \)
+
+- Initial state probabilities  
+  \[
+  \pi = \{\pi_i\}, \quad \pi_i = P(S_1 = i)
+  \]
 
 The **Expectation-Maximization (EM)** algorithm estimates these parameters by maximizing the likelihood of the observed data.
 
+---
+
 ### Feature Calculations
 
-- **Daily Return:**
-  \[
-  r_t = \frac{P_t - P_{t-1}}{P_{t-1}}
-  \]
+**Daily Return:**
 
-- **Rolling Volatility (window = 10 days):**
-  \[
-  \sigma_t = \sqrt{\frac{1}{9} \sum_{i=t-9}^{t} (r_i - \bar{r}_t)^2}
-  \]
+\[
+r_t = \frac{P_t - P_{t-1}}{P_{t-1}}
+\]
 
-where \( \bar{r}_t \) is the mean return over the window.
+**Rolling Volatility (window = 10 days):**
+
+\[
+\sigma_t = \sqrt{\frac{1}{9} \sum_{i=t-9}^{t} (r_i - \bar{r}_t)^2}
+\]
+
+where \( \bar{r}_t \) is the mean return over the window:
+
+\[
+\bar{r}_t = \frac{1}{10} \sum_{i=t-9}^t r_i
+\]
+
+---
 
 ### Cumulative Returns Calculation
 
@@ -101,7 +123,6 @@ For daily simple returns \( r_t \), cumulative returns up to day \( T \) are:
 CR_T = \prod_{t=1}^{T} (1 + r_t) - 1
 \]
 
----
 
 ## 5. Output
 
