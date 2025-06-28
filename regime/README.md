@@ -64,98 +64,76 @@ The project was divided into distinct phases:
 
 ## 4. Math
 
-### Hidden Markov Model (HMM) Fundamentals
+## Hidden Markov Model (HMM) Fundamentals
 
 An HMM assumes:
 
-- There is an underlying sequence of hidden states  
-  \( S_t \in \{1, 2, \ldots, N\} \)  
-  governing market behavior.
+- There is an underlying sequence of hidden states:
 
-- Each hidden state emits observations \( O_t \), here modeled as a continuous Gaussian distribution over the features  
-  \( \mathbf{x}_t = [\text{return}_t, \text{volatility}_t] \)
+$$
+S_t \in \{1, 2, \ldots, N\}
+$$
+
+- Each hidden state emits observations \(O_t\), modeled as a continuous Gaussian distribution over the features:
+
+$$
+\mathbf{x}_t = \bigl[\text{return}_t, \text{volatility}_t \bigr]
+$$
 
 The model parameters include:
 
-- Transition probabilities  
-  \[
-  A = [a_{ij}], \quad \text{where} \quad a_{ij} = P(S_{t+1} = j \mid S_t = i)
-  \]
+- **Transition probabilities:**
 
-- Emission parameters for each state \( j \), with mean vector \( \boldsymbol{\mu}_j \) and covariance matrix \( \Sigma_j \)
+$$
+A = \bigl[ a_{ij} \bigr], \quad \text{where} \quad a_{ij} = P\bigl(S_{t+1} = j \mid S_t = i \bigr)
+$$
 
-- Initial state probabilities  
-  \[
-  \pi = \{\pi_i\}, \quad \pi_i = P(S_1 = i)
-  \]
+- **Emission parameters for each state \(j\)**, with mean vector and covariance matrix:
 
-The **Expectation-Maximization (EM)** algorithm estimates these parameters by maximizing the likelihood of the observed data.
+$$
+\boldsymbol{\mu}_j, \quad \Sigma_j
+$$
+
+- **Initial state probabilities:**
+
+$$
+\pi = \{ \pi_i \}, \quad \pi_i = P(S_1 = i)
+$$
+
+The Expectation-Maximization (EM) algorithm estimates these parameters by maximizing the likelihood of the observed data.
 
 ---
 
-### Feature Calculations
+## Feature Calculations
 
 **Daily Return:**
 
-\[
+$$
 r_t = \frac{P_t - P_{t-1}}{P_{t-1}}
-\]
+$$
 
 **Rolling Volatility (window = 10 days):**
 
-\[
-\sigma_t = \sqrt{\frac{1}{9} \sum_{i=t-9}^{t} (r_i - \bar{r}_t)^2}
-\]
+$$
+\sigma_t = \sqrt{ \frac{1}{9} \sum_{i=t-9}^{t} \bigl( r_i - \bar{r}_t \bigr)^2 }
+$$
 
-where \( \bar{r}_t \) is the mean return over the window:
+where the rolling mean return is:
 
-\[
-\bar{r}_t = \frac{1}{10} \sum_{i=t-9}^t r_i
-\]
+$$
+\bar{r}_t = \frac{1}{10} \sum_{i=t-9}^{t} r_i
+$$
 
 ---
 
-### Cumulative Returns Calculation
+## Cumulative Returns Calculation
 
-For daily simple returns 
-𝑟
-𝑡
-r 
-t
-​
- , cumulative returns up to day 
-𝑇
-T are:
+For daily simple returns \(r_t\), cumulative returns up to day \(T\) are calculated as:
 
-𝐶
-𝑅
-𝑇
-=
-∏
-𝑡
-=
-1
-𝑇
-(
-1
-+
-𝑟
-𝑡
-)
-−
-1
-CR 
-T
-​
- = 
-t=1
-∏
-T
-​
- (1+r 
-t
-​
- )−1
+$$
+CR_T = \prod_{t=1}^{T} \bigl(1 + r_t \bigr) \;-\; 1
+$$
+
 
 
 ## 5. Output
