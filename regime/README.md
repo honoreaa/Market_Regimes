@@ -64,7 +64,7 @@ The project was divided into distinct phases:
 
 ## 4. Math
 
-## Hidden Markov Model (HMM) Fundamentals
+# Hidden Markov Model (HMM) Fundamentals
 
 An HMM assumes:
 
@@ -148,13 +148,11 @@ The project produced:
 
 - **Statistical insights:**
 
-| Regime  | Mean Return | Volatility | Sharpe Ratio | Max Drawdown | Duration (days) |
-|---------|-------------|------------|--------------|--------------|-----------------|
-| 0       | +0.0012     | 0.008      | 0.15         | -0.12        | 300             |
-| 1       | -0.0008     | 0.015      | -0.05        | -0.30        | 150             |
-| 2       | +0.0003     | 0.004      | 0.07         | -0.06        | 200             |
-
-*(Example values — see actual results in `regime_stats.png`)*
+| Regime | Mean Return | Volatility | Sharpe Ratio | Max Drawdown |
+|--------|-------------|------------|--------------|--------------|
+|   0    |   0.010040  |  0.006278  |   1.599201   |   -0.259340  |
+|   1    |  -0.001279  |  0.008111  |  -0.157677   |   -0.285656  |
+|   2    |  -0.000692  |  0.021798  |  -0.031745   |   -0.352174  |
 
 - **Backtest:**
 
@@ -163,6 +161,10 @@ A strategy that takes a long position only during the "trending" regime outperfo
 - Achieving higher cumulative returns
 - Experiencing lower drawdowns
 - Demonstrating smoother equity curves
+
+  
+<img width="1234" alt="Screenshot 2025-06-27 at 5 22 40 PM" src="https://github.com/user-attachments/assets/9b990607-09a1-4da5-8c55-cafbdf9ef04f" />
+<img width="1267" alt="Screenshot 2025-06-27 at 5 23 05 PM" src="https://github.com/user-attachments/assets/98c03489-73d7-460b-b5f9-f99f2ae1b1f2" />
 
 ---
 
@@ -181,11 +183,6 @@ A strategy that takes a long position only during the "trending" regime outperfo
 
 - **Final takeaway:**  
   Incorporating regime detection through probabilistic models like HMMs can make trading strategies more adaptive, robust, and ultimately more profitable.
-
----
-
-# Thank you for exploring this project!  
-Feel free to reach out with questions or suggestions.
 
 ---
 
