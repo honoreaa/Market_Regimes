@@ -6,7 +6,7 @@
 
 The primary objective of this project is to identify distinct **market regimes** within NASDAQ E-mini futures (`NQ=F`) price data using a **Hidden Markov Model (HMM)**. Market regimes represent different states or environments in which asset prices behave differently, such as trending markets, volatile periods, or stable sideways movements.
 
-By accurately detecting these regimes from historical data, the project aims to:
+By accurately detecting these regimes from historical data, my project aims to:
 
 - Understand the underlying structural shifts in market behavior
 - Inform trading strategies by adapting to current regimes
@@ -25,13 +25,13 @@ The idea was to leverage **machine learning**, specifically **unsupervised learn
 - The transition probabilities capture how markets move between regimes over time
 - The model learns regime characteristics (mean, variance) directly from features
 
-The project focused on futures contracts, chosen because they are widely traded, liquid, and reflect institutional market views.
+My project focused on futures contracts, chosen because they are widely traded, liquid, and reflect institutional market views.
 
 ---
 
 ## 3. Process
 
-The project was divided into distinct phases:
+My project was divided into distinct phases:
 
 ### Data Acquisition
 
@@ -138,7 +138,7 @@ $$
 
 ## 5. Output
 
-The project produced:
+My analysis produced:
 
 - **Regime-labelled data:** The original time series enriched with regime assignment for each day.
 - **Visualizations:**
