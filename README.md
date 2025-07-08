@@ -168,7 +168,17 @@ A strategy that takes a long position only during the "trending" regime outperfo
 
 ---
 
-## 6. Conclusions
+## 6. Limitations
+
+Overall, I feel very good about the work that I did on this project. However, I hold some doubts about the accuracy of my portfolio's growth. Namely:
+
+- **1. Lookahead Bias**: My model predicts the regime on each row of my dataframe AFTER fitting the model onto the dataset, which gives me knowledge that I (or a bot) wouldn't have access to while actively trading. To fix this, I could use walk-forward validation, where I fit my data on time t and predict the regime at t+1. This would be more practical, but the point of this project was to map trends and simulate a perfect environment for learning purposes.
+
+- **2. No Slippage**: My trading bot can instantly enter or close a position, which means that it doesn't encounter any slippage. There also aren't any commission fees or bid-ask spreads, which can corrode returns over time in a way that's realistic to what an everyday futures trader might encounter.
+
+---
+
+## 7. Conclusions
 
 - **HMMs effectively segment markets into meaningful regimes** based on returns and volatility, capturing structural shifts not visible from price alone.
 
